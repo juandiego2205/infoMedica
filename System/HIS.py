@@ -15,7 +15,7 @@ def conectar_mongo():
 
 # Send a ping to confirm a successful connection
 def mostrar_menu():
-    print("\n--- MENÚ PRINCIPAL ---")
+    print("\n--- MENU PRINCIPAL ---")
     print("1.Cargar Archivos (TXT, CSV, JSON)")
     print("2.Insertar Pacientes")
     print("3.ELiminar Paciente")
@@ -27,7 +27,7 @@ def main():
     patients = conectar_mongo()
     while True:
         mostrar_menu()
-        opcion = input("Seleccione una opción: ")
+        opcion = input("Seleccione una opcion: ")
 
         if opcion == "1":
             leer_archivos_dispositivos('Medical Files',patients)
