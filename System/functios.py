@@ -7,9 +7,8 @@ import json as js
 
 
 # Función para cargar el archivo JSON como diccionario y enviarlo a MongoDB
-def cargar_json_como_dict(nombre_archivo, patients=None):
-    base_dir = os.path.dirname(os.path.abspath(__file__))  # Ruta del script
-    ruta_json = os.path.join(base_dir, '..', 'Medical Files', nombre_archivo)  # Ruta relativa
+def cargar_json(ruta_json, patients=None):
+ # Ruta relativa
 
     with open(ruta_json, 'r', encoding='utf-8') as archivo:
         pacientes = js.load(archivo)
@@ -34,13 +33,10 @@ def cargar_json_como_dict(nombre_archivo, patients=None):
     phrase = f"[JSON] Documento insertado en MongoDB: {data_limpio.get('ID', '(sin ID)')}"
     return phrase
 
-def cargar_datos_paciente(nombre_archivo,patients=None):
-    # Obtener la ruta absoluta del archivo relativo
-    base_dir = os.path.dirname(os.path.abspath(__file__))  # Ruta del script
-    ruta_archivo = os.path.join(base_dir, '..', 'Medical Files', nombre_archivo)  # Ruta relativa corregida
+def cargar_txt(ruta_txt,patients=None):
     
     # Abre el archivo y lee las líneas
-    with open(ruta_archivo, encoding='utf-8') as file:
+    with open(ruta_txt, encoding='utf-8') as file:
         content = file.readlines()
 
     areas, tiempos = {}, {}
@@ -83,7 +79,7 @@ def cargar_datos_paciente(nombre_archivo,patients=None):
         
         # Verifica si el ID ya existe en la base de datos
         if patients.find_one({"ID": paciente_id}):
-            return f"[ERROR] El documento con ID {paciente_id} ya existe en MongoDB. No se inserto."
+            return f"[ERROR] El documento con ID {paciente_id} ya existe en MongoDB."
         
         # Si el ID no existe, se inserta el documento
         patients.insert_one(data_paciente3)
@@ -91,9 +87,7 @@ def cargar_datos_paciente(nombre_archivo,patients=None):
         return f"[SUCCESS] Documento insertado en MongoDB: {data_paciente3['ID']}"
     else:
         return "[ERROR] No se encontró un paciente con la información especificada."
-def cargar_csv_como_dict(nombre_archivo,patients=None, delimitador=';'):
-    base_dir = os.path.dirname(os.path.abspath(__file__))  # Ruta del script
-    ruta_csv = os.path.join(base_dir, '..', 'Medical Files', nombre_archivo)  # Ruta relativa
+def cargar_csv(ruta_csv,patients=None, delimitador=';'):
 
     # Leer el CSV
     df = pd.read_csv(ruta_csv, delimiter=delimitador)
@@ -117,3 +111,19 @@ def cargar_csv_como_dict(nombre_archivo,patients=None, delimitador=';'):
     
     phrase = f"[CSV] Documento insertado en MongoDB: {data_limpio.get('ID', '(sin ID)')}"
     return phrase
+
+def leer_archivos_dispositivos(nombre_archivo,database):
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # Ruta del script
+    ruta = os.path.join(base_dir, '..',nombre_archivo)
+    for filename in os.listdir(ruta):
+        file_path = os.path.join(ruta, filename)
+        if file_path.endswith('.txt'):
+            respuesta= cargar_txt(file_path,database)
+            print(respuesta)
+        elif file_path.endswith('.csv'):
+            respuesta= cargar_csv(file_path,database)
+            print(respuesta)
+        elif file_path.endswith('.json'):
+            respuesta= cargar_json(file_path,database)
+            print(respuesta)
+
