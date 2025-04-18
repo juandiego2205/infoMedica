@@ -36,12 +36,34 @@ def main():
             pass
 
         elif opcion == "3":
+            id_paciente = input("Ingrese el ID del paciente a eliminar: ")
+            # Verifica si el paciente existe
+            paciente = patients.find_one({"ID": id_paciente})
+            if paciente:
+                # Elimina el paciente
+                patients.delete_one({"ID": id_paciente})
+                print(f"Paciente con ID {id_paciente} eliminado.")
             pass
 
         elif opcion == "4":
+            id_paciente = input("Ingrese el ID del paciente a actualizar: ")
+            # Verifica si el paciente existe
+            paciente = patients.find_one({"ID": id_paciente})
+            if paciente:
+                # Solicita los nuevos datos
+                nuevo_nombre = input("Ingrese el nuevo nombre: ")
+                nuevo_apellido = input("Ingrese el nuevo apellido: ")
+                # Actualiza el paciente
+                patients.update_one({"ID": id_paciente}, {"$set": {"nombre": nuevo_nombre, "apellido": nuevo_apellido}})
+                print(f"Paciente con ID {id_paciente} actualizado.")
+            else:
+                print(f"No se encontró un paciente con ID {id_paciente}.")
+            
             pass
 
         elif opcion == "5":
+            id_paciente = input("Ingrese el ID del paciente a leer: ")
+            # Verifica si el paciente existe 
             pass
         elif opcion == "6":
             print("Saliendo del programa...")
