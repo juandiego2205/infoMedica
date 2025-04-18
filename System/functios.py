@@ -3,20 +3,13 @@ import os
 import pandas as pd
 import json as js
 
-# Función para cargar el archivo CSV como diccionario y enviarlo a MongoDB
-
-
 # Función para cargar el archivo JSON como diccionario y enviarlo a MongoDB
 def cargar_json(ruta_json, patients=None):
- # Ruta relativa
-
     with open(ruta_json, 'r', encoding='utf-8') as archivo:
         pacientes = js.load(archivo)
     if not pacientes:
         return {}
-    
-    # Tomar el primer paciente
-    data = pacientes[0]  
+    data = pacientes[0]  # Tomar el primer paciente
     data_limpio = {key.strip(): value for key, value in data.items()}
     
     # Verificamos y convertimos 'ID' a string si existe
@@ -33,6 +26,7 @@ def cargar_json(ruta_json, patients=None):
     phrase = f"[JSON] Documento insertado en MongoDB: {data_limpio.get('ID', '(sin ID)')}"
     return phrase
 
+# Función para cargar el archivo CSV como diccionario y enviarlo a MongoDB
 def cargar_txt(ruta_txt,patients=None):
     
     # Abre el archivo y lee las líneas
