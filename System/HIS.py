@@ -1,5 +1,4 @@
-#Connect to MongoDB using pymongo
-# Import the required libraries
+
 from functios import leer_archivos_dispositivos
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -14,7 +13,6 @@ def conectar_mongo():
     db = cliente["PacientesDB"]
     return db["Pacientes"]
 
-# Send a ping to confirm a successful connection
 def mostrar_menu():
     print("\n--- MENU PRINCIPAL ---")
     print("1.Cargar Archivos (TXT, CSV, JSON)")
@@ -59,8 +57,7 @@ def main():
                 valor = input(f"Ingrese el valor para el tiempo '{tiempo.strip()}': ")
                 valores_tiempos[tiempo.strip()] = valor
 
-            # Formatea la fecha
-            fecha_formateada = f"{fecha[:4]}-{fecha[4:6]}-{fecha[6:8]}"
+            fecha_formateada = f"{fecha[:4]}-{fecha[4:6]}-{fecha[6:8]}" # Formatea la fecha
 
             paciente_nuevo = {
                 "nombre": nombre,
