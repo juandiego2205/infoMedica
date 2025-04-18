@@ -25,7 +25,7 @@ def cargar_json(ruta_json, patients=None):
     
     # Comprobamos si ya existe el ID en la base de datos
     if patients.find_one({'ID': data_limpio['ID']}):
-        return f"[JSON] El documento con ID {data_limpio['ID']} ya existe en MongoDB."
+        return f"[ERROR] El documento con ID {data_limpio['ID']} ya existe en MongoDB."
     
     # Insertar en MongoDB si no existe
     patients.insert_one(data_limpio)
@@ -84,7 +84,7 @@ def cargar_txt(ruta_txt,patients=None):
         # Si el ID no existe, se inserta el documento
         patients.insert_one(data_paciente3)
         
-        return f"[SUCCESS] Documento insertado en MongoDB: {data_paciente3['ID']}"
+        return f"[TXT] Documento insertado en MongoDB: {data_paciente3['ID']}"
     else:
         return "[ERROR] No se encontró un paciente con la información especificada."
 def cargar_csv(ruta_csv,patients=None, delimitador=';'):
@@ -104,7 +104,7 @@ def cargar_csv(ruta_csv,patients=None, delimitador=';'):
     
     # Comprobamos si ya existe el ID en la base de datos
     if patients.find_one({'ID': data_limpio['ID']}):
-        return f"[CSV] El documento con ID {data_limpio['ID']} ya existe en MongoDB."
+        return f"[ERROR] El documento con ID {data_limpio['ID']} ya existe en MongoDB."
     
     # Insertar en MongoDB si no existe
     patients.insert_one(data_limpio)
