@@ -1,0 +1,10 @@
+# Ignorar entorno virtual
+venv/
+
+# Ignorar archivo de variables de entorno
+.env
+
+# Otros archivos comunes que puedes querer ignorar
+__pycache__/
+*.pyc
+*.pyo

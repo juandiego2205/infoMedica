@@ -1,19 +1,27 @@
+import os
+from flask.cli import load_dotenv
 from functios import leer_archivos_dispositivos
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv # type: ignore
 from flask_pymongo import PyMongo
 
+# Cargar las variables del archivo .env
+load_dotenv()
+
 app = Flask(__name__)
-uri = "mongodb+srv://kevingarciaj:kev3033@cluster0.rnqfiyd.mongodb.net/HIS?retryWrites=true&w=majority&appName=Cluster0"
+
+# Obtener URI desde variable de entorno
+uri = os.getenv("MONGO_URI")
 app.config['MONGO_URI'] = uri
 
 mongo = PyMongo(app)
 CORS(app)
 
-db = mongo.db        
-patients = db.Report  
+db = mongo.db
+patients = db.Report
 
 @app.route('/cargar_archivos', methods=['POST'])
 def cargar_archivos():
@@ -48,6 +56,7 @@ def eliminar_paciente(id_paciente):
         return jsonify({"mensaje": "Paciente eliminado correctamente."})
     else:
         return jsonify({"error": "Paciente no encontrado."}), 404
+    
 @app.route('/obtener_paciente/<id_paciente>', methods=['GET'])
 def obtener_paciente(id_paciente):
     paciente = patients.find_one({"ID": str(id_paciente)})
