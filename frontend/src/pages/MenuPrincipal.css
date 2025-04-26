@@ -2,7 +2,7 @@
 
 /* Fondo para el navbar */
 .navbar-fondo {
-  background-image: url('../../public/background.jpg'); /* cambia el path según tu imagen */
+  background-image: url('../../public/background.png'); /* cambia el path según tu imagen */
   background-size: cover;
   background-position: center;
   height: 200px;
@@ -12,3 +12,7 @@
 .container {
   padding-top: 100px;
 }
+/* Navbar links */
+
+
+

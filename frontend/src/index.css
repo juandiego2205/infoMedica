@@ -54,3 +54,38 @@ code {
     transform: rotate(360deg);
   }
 }
+
+/*Estilos Home*/
+.text_home{
+  font-size: 12px;
+  color: black  ; /* Gris oscuro */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  text-align: justify;
+}
+.container_home {
+  display: flex;
+  justify-content: left;
+  align-items:center;
+  min-height: 80vh; /* Toda la altura de la pantalla */
+  padding: 20px;
+  background: transparent; /* Fondo totalmente transparente */
+}
+body{
+  background-image: url('../public/Ingreso.jpg');
+  background-size: cover; /* La imagen sigue cubriendo el 100% de la pantalla */
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* El cuerpo ocupa toda la altura de la ventana */
+  width: 100%;
+  margin: 0;
+  padding-bottom: 50vh; /* Deja un espacio vacío del 20% en la parte inferior */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.display-4 {
+  color:#2F4F4F; /* Todo el texto fuera del <span> será negro */
+}
