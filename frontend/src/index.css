@@ -68,7 +68,7 @@ code {
   display: flex;
   justify-content: left;
   align-items:center;
-  min-height: 80vh; /* Toda la altura de la pantalla */
+  min-height: 100vh; /* Toda la altura de la pantalla */
   padding: 20px;
   background: transparent; /* Fondo totalmente transparente */
 }
@@ -88,4 +88,133 @@ body{
 }
 .display-4 {
   color:#2F4F4F; /* Todo el texto fuera del <span> será negro */
+}
+/*ingreso*/
+.container_ingresar {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center, pero ahora usamos margin-top para bajarlo */
+  min-height: 50vh;
+  background-color: #f9f9f9;
+  margin-top: 60px; /* Aquí bajamos todo el bloque */
+}
+
+.form-container {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.form-container {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px; /* Un poco más estrecho */
+}
+
+.form-title {
+  text-align: center;
+  font-size: 1.25rem; /* Tamaño ajustado */
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 12px; /* Reducido el margen */
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Menos espacio entre los elementos */
+}
+
+.form-input {
+  padding: 6px; /* Menos padding */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem; /* Fuente más pequeña */
+  transition: border 0.3s;
+}
+
+.form-input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.area-section {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.area-title {
+  font-size: 0.9rem; /* Fuente más pequeña */
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.btn-add-area {
+  background-color: #3498db;
+  color: white;
+  padding: 6px 12px; /* Reducido el padding */
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-add-area:hover {
+  background-color: #2980b9;
+}
+
+.area-list {
+  margin-top: 6px;
+  padding-left: 12px;
+}
+
+.area-item {
+  list-style-type: disc;
+  color: #2c3e50;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; /* Reducido el margen */
+}
+
+.btn-upload,
+.btn-submit {
+  padding: 6px 10px; /* Menos padding */
+  font-size: 0.9rem; /* Fuente más pequeña */
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.btn-upload {
+  background-color: #9b59b6;
+  color: white;
+}
+
+.btn-submit {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.btn-upload:hover,
+.btn-submit:hover {
+  transform: scale(1.05);
+}
+
+.btn-upload:focus,
+.btn-submit:focus {
+  outline: none;
 }

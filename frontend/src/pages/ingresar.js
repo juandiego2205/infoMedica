@@ -10,7 +10,7 @@ const IngresarPaciente = () => {
   });
 
   const [areas, setAreas] = useState([]);
-  const [areaInput, setAreaInput] = useState({ nombre: '', valor: '', tiempo: '' });
+  const [areaInput, setAreaInput] = useState({ nombre: '', valor: '' });  // Eliminar 'tiempo'
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,16 +23,16 @@ const IngresarPaciente = () => {
   };
 
   const addArea = () => {
-    if (areaInput.nombre && areaInput.valor && areaInput.tiempo) {
+    if (areaInput.nombre && areaInput.valor) {  // Solo validar nombre y valor
       setAreas([...areas, { ...areaInput }]);
-      setAreaInput({ nombre: '', valor: '', tiempo: '' });
+      setAreaInput({ nombre: '', valor: '' });  // Limpiar los campos después de agregar
     }
   };
 
   const resetForm = () => {
     setFormData({ nombre: '', apellido: '', fecha: '', ID: '' });
     setAreas([]);
-    setAreaInput({ nombre: '', valor: '', tiempo: '' });
+    setAreaInput({ nombre: '', valor: '' });
   };
 
   const handleSubmit = async (e) => {
@@ -42,10 +42,8 @@ const IngresarPaciente = () => {
     const fechaSinGuiones = formData.fecha.replace(/-/g, '');
 
     const mediciones = {};
-    const tiempos = {};
     areas.forEach(area => {
-      mediciones[area.nombre] = area.valor;
-      tiempos[area.nombre] = area.tiempo;
+      mediciones[area.nombre] = area.valor;  // Solo manejar nombre y valor
     });
 
     try {
@@ -55,7 +53,6 @@ const IngresarPaciente = () => {
         ID: formData.ID,
         fecha: fechaSinGuiones,
         MEDICIONES: mediciones,
-        TIEMPOS: tiempos
       };
 
       const response = await axios.post('http://127.0.0.1:5000/insertar_paciente', payload);
@@ -76,47 +73,41 @@ const IngresarPaciente = () => {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Pacientes</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} className="w-full p-2 border rounded" />
-        <input type="text" name="apellido" placeholder="Apellido" value={formData.apellido} onChange={handleChange} className="w-full p-2 border rounded" />
-        <input type="date" name="fecha" value={formData.fecha} onChange={handleChange} className="w-full p-2 border rounded" />
-        <input type="text" name="ID" placeholder="Documento" value={formData.ID} onChange={handleChange} className="w-full p-2 border rounded" required />
+    <div className="container_ingresar">
+    <div className="form-container">
+      <h1 className="form-title">Sistema de Ingreso</h1>
+      <form onSubmit={handleSubmit} className="form-content">
+        <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} className="form-input" />
+        <input type="text" name="apellido" placeholder="Apellido" value={formData.apellido} onChange={handleChange} className="form-input" />
+        <input type="date" name="fecha" value={formData.fecha} onChange={handleChange} className="form-input" />
+        <input type="text" name="ID" placeholder="Documento" value={formData.ID} onChange={handleChange} className="form-input" required />
 
-        <div className="border p-2 rounded">
-          <h2 className="font-semibold mb-2">Áreas</h2>
-          <input type="text" name="nombre" placeholder="Nombre del área" value={areaInput.nombre} onChange={handleAreaChange} className="w-full p-2 border rounded mb-2" />
-          <input type="text" name="valor" placeholder="Valor del área" value={areaInput.valor} onChange={handleAreaChange} className="w-full p-2 border rounded mb-2" />
-          <input type="text" name="tiempo" placeholder="Tiempo del área" value={areaInput.tiempo} onChange={handleAreaChange} className="w-full p-2 border rounded mb-2" />
-          <button type="button" onClick={addArea} className="bg-blue-500 text-white px-4 py-2 rounded">Agregar Área</button>
+        <div className="area-section">
+          <h2 className="area-title">Áreas</h2>
+          <input type="text" name="nombre" placeholder="Nombre del área" value={areaInput.nombre} onChange={handleAreaChange} className="form-input" />
+          <input type="text" name="valor" placeholder="Valor del área" value={areaInput.valor} onChange={handleAreaChange} className="form-input" />
+          <button type="button" onClick={addArea} className="btn-add-area">Agregar Área</button>
 
-          <ul className="mt-4 list-disc pl-5">
+          <ul className="area-list">
             {areas.map((area, index) => (
-              <li key={index}>{`${area.nombre} - Valor: ${area.valor}, Tiempo: ${area.tiempo}`}</li>
+              <li key={index} className="area-item">{`${area.nombre} - Valor: ${area.valor}`}</li>
             ))}
           </ul>
         </div>
 
-        <div className="flex justify-between mt-4">
-          <button
-            type="button"
-            onClick={handleUpload}
-            className="bg-purple-600 text-white px-4 py-2 rounded"
-          >
-            Subir archivos
-          </button>
-
-          <button type="submit" className="bg-green-600 text-white px-6 py-2 rounded">
-            Enviar
-          </button>
+        <div className="form-actions">
+          <button type="button" onClick={handleUpload} className="btn-upload">Subir archivos</button>
+          <button type="submit" className="btn-submit">Enviar</button>
         </div>
       </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default IngresarPaciente;
+
+
 
 
 

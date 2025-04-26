@@ -1,5 +1,4 @@
 import React from 'react';
-import './MenuPrincipal.css';
 import { useEffect } from 'react';
 import '../index.css';
  // Importa el archivo CSS para estilos personalizados

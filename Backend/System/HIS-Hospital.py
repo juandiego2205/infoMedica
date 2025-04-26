@@ -43,7 +43,6 @@ def insertar_paciente():
         "ID": data["ID"],
         "fecha": fecha_formateada,
         "MEDICIONES": data["MEDICIONES"],
-        "TIEMPOS": data["TIEMPOS"]
     }
 
     patients.insert_one(nuevo_paciente)

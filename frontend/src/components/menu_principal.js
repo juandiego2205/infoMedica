@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const MenuPrincipal = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark navbar-light bg-transparence py-3">
+    <nav className="navbar navbar-expand-lg navbar-dark navbar-light bg-transparence py-3 fixed-top">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -17,11 +17,10 @@ const MenuPrincipal = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto"> {/* Cambié ms-auto a me-auto para alinear a la izquierda */}
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0"> {/* Alineación de los enlaces a la izquierda */}
             <li className="nav-item">
               <Link className="nav-link text-white" to="/">
-              <img src="./logojk.png" alt="Logo" style={{ height: '20px', marginTop: '0', marginBottom: '0', padding: '0' }} />
-
+                <img src="./logojk.png" alt="Logo" style={{ height: '20px', marginTop: '0', marginBottom: '0', padding: '0' }} />
               </Link>
             </li>
             <li className="nav-item">
@@ -44,6 +43,7 @@ const MenuPrincipal = () => {
 };
 
 export default MenuPrincipal;
+
 
 
 
