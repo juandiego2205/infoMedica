@@ -72,7 +72,7 @@ code {
   padding: 20px;
   background: transparent; /* Fondo totalmente transparente */
 }
-body{
+html,body{
   background-image: url('../public/Ingreso.jpg');
   background-size: cover; /* La imagen sigue cubriendo el 100% de la pantalla */
   background-position: center;
@@ -217,4 +217,290 @@ body{
 .btn-upload:focus,
 .btn-submit:focus {
   outline: none;
+}
+/*Editar*/
+/* --- CONTENEDOR GENERAL --- */
+.form-container {
+  max-width: 900px;
+  margin: 4rem auto 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* --- TÍTULO --- */
+.form-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #008B8B;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+}
+
+/* --- BUSCADOR DE PACIENTE --- */
+.search-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #008B8B;
+  box-shadow: 0 0 5px #008B8B;
+}
+
+.search-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #008B8B;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #006666;
+}
+
+/* --- MENSAJE DE ERROR --- */
+.error-message {
+  text-align: center;
+  color: #e63946;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+/* --- FORMULARIO CAMPOS --- */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* --- CADA FILA DEL FORMULARIO --- */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .form-field {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* --- ETIQUETAS (LABELS) --- */
+.field-label {
+  width: 30%;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+}
+
+/* --- INPUTS DEL FORMULARIO --- */
+.field-input {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #008B8B;
+  box-shadow: 0 0 5px #008B8B;
+}
+
+/* --- BOTONES FINALES --- */
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding-top: 2rem;
+}
+
+.form-button {
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.update-button {
+  background-color: #008B8B;
+}
+
+.update-button:hover {
+  background-color: #006666;
+  transform: scale(1.05);
+}
+
+.delete-button {
+  background-color: #e63946;
+}
+
+.delete-button:hover {
+  background-color: #cc2b39;
+  transform: scale(1.05);
+}
+.form-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Bloque de información general */
+.info-general {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Bloque de diccionarios */
+.info-diccionarios {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Responsive: que se pongan uno debajo del otro en pantallas pequeñas */
+@media (max-width: 768px) {
+  .form-content {
+    flex-direction: column;
+  }
+}
+.form-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Cada bloque en su propia tarjeta */
+.info-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  flex: 1 1 45%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #008B8B;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-content {
+    flex-direction: column;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.field-input {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.field-input:focus {
+  border-color: #008B8B;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-button {
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.update-button {
+  background-color: #008B8B;
+  color: white;
+}
+
+.update-button:hover {
+  background-color: #006666;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+.form-container {
+  min-height: 100vh; /* al menos toda la pantalla */
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente opcional */
+  backdrop-filter: blur(5px); /* Hace que el fondo se vea más estilizado */
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  background: url('../public/Ingreso.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
 }

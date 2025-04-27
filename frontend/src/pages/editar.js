@@ -119,73 +119,91 @@ const EditarPaciente = () => {
   );
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-10">
-      <h1 className="text-3xl font-bold text-center mb-6 text-[#008B8B]">EDITAR PACIENTE</h1>
-
-      {!pacienteData && (
-        <div className="flex mb-6 gap-2">
-          <input
-            type="text"
-            placeholder="Documento (ID)"
-            value={searchID}
-            onChange={(e) => setSearchID(e.target.value)}
-            className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#008B8B]"
-          />
-          <button
-            onClick={buscarPaciente}
-            className="px-5 py-2 rounded-lg text-white font-medium transition"
-            style={{ backgroundColor: '#008B8B' }}
-          >
-            Buscar
-          </button>
-        </div>
-      )}
-
-      {mensaje && <p className="text-sm text-red-600 mb-4">{mensaje}</p>}
-
-      {pacienteData && (
-        <div className="space-y-6">
-          {/* Campos simples */}
+    <div className="form-container">
+    <h1 className="form-title">Editar Paciente</h1>
+  
+    {/* Input de búsqueda */}
+    {!pacienteData && (
+      <div className="search-section">
+        <input
+          type="text"
+          placeholder="Documento (ID)"
+          value={searchID}
+          onChange={(e) => setSearchID(e.target.value)}
+          className="search-input"
+        />
+        <button
+          onClick={buscarPaciente}
+          className="search-button"
+        >
+          Buscar
+        </button>
+      </div>
+    )}
+  
+    {/* Mensaje de error */}
+    {mensaje && (
+      <p className="error-message">{mensaje}</p>
+    )}
+  
+    {/* Contenido cuando ya existe paciente */}
+    {pacienteData && (
+      <div className="form-content">
+        
+        {/* Información General */}
+        <div className="info-card">
+          <h2 className="section-title">Información General</h2>
           {Object.entries(pacienteData)
             .filter(([_, value]) => typeof value !== 'object' || value === null)
             .map(([key, value]) => (
-              <div key={key}>
-                <label className="block text-sm font-medium text-gray-600 mb-1">{key.toUpperCase()}</label>
+              <div key={key} className="form-field">
+                <label className="field-label">{key.toUpperCase()}</label>
                 <input
                   type="text"
                   value={value || ''}
                   onChange={(e) => handleChange(key, e.target.value)}
-                  className="w-[50%] border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#008B8B]"
+                  className="field-input"
                 />
               </div>
             ))}
-
-          {/* Diccionarios */}
+        </div>
+  
+        {/* Diccionarios */}
+        <div className="info-card">
+          <h2 className="section-title">Datos Adicionales</h2>
           {Object.entries(pacienteData)
             .filter(([_, value]) => typeof value === 'object' && value !== null)
             .map(([key, value]) => (
-              <div key={key}>{renderObjectFields(key, value)}</div>
+              <div key={key}>
+                {renderObjectFields(key, value)}
+              </div>
             ))}
-
-          <div className="flex gap-4 justify-end">
-            <button
-              onClick={actualizarPaciente}
-              className="px-6 py-2 rounded-lg text-white font-medium transition"
-              style={{ backgroundColor: '#008B8B' }}
-            >
-              Actualizar
-            </button>
-            <button
-              onClick={eliminarPaciente}
-              className="px-6 py-2 rounded-lg text-white font-medium transition"
-              style={{ backgroundColor: '#008B8B' }}
-            >
-              Eliminar
-            </button>
-          </div>
         </div>
-      )}
-    </div>
+  
+      </div>
+    )}
+  
+    {/* Botones */}
+    {pacienteData && (
+      <div className="form-buttons">
+        <button
+          onClick={actualizarPaciente}
+          className="form-button update-button"
+        >
+          Actualizar
+        </button>
+        <button
+          onClick={eliminarPaciente}
+          className="form-button delete-button"
+        >
+          Eliminar
+        </button>
+      </div>
+    )}
+  </div>
+  
+
+
   );
 };
 
