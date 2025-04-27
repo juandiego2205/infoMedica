@@ -77,31 +77,57 @@ const IngresarPaciente = () => {
     <div className="form-container">
       <h1 className="form-title">Sistema de Ingreso</h1>
       <form onSubmit={handleSubmit} className="form-content">
-        <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} className="form-input" />
-        <input type="text" name="apellido" placeholder="Apellido" value={formData.apellido} onChange={handleChange} className="form-input" />
-        <input type="date" name="fecha" value={formData.fecha} onChange={handleChange} className="form-input" />
-        <input type="text" name="ID" placeholder="Documento" value={formData.ID} onChange={handleChange} className="form-input" required />
-
+        
+        <div className="form-field">
+          <label className="field-label">Nombre</label>
+          <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} className="field-input" />
+        </div>
+        <div className="form-field">
+          <label className="field-label">Apellido</label>
+          <input type="text" name="apellido" placeholder="Apellido" value={formData.apellido} onChange={handleChange} className="field-input" />
+        </div>
+  
+        <div className="form-field">
+          <label className="field-label">Fecha</label>
+          <input type="date" name="fecha" value={formData.fecha} onChange={handleChange} className="field-input" />
+        </div>
+  
+        <div className="form-field">
+          <label className="field-label">Documento</label>
+          <input type="text" name="ID" placeholder="Documento" value={formData.ID} onChange={handleChange} className="field-input" required />
+        </div>
+  
         <div className="area-section">
           <h2 className="area-title">Áreas</h2>
-          <input type="text" name="nombre" placeholder="Nombre del área" value={areaInput.nombre} onChange={handleAreaChange} className="form-input" />
-          <input type="text" name="valor" placeholder="Valor del área" value={areaInput.valor} onChange={handleAreaChange} className="form-input" />
-          <button type="button" onClick={addArea} className="btn-add-area">Agregar Área</button>
 
+          <div className="form-field">
+            <label className="field-label">Nombre del área</label>
+            <input type="text" name="nombre" placeholder="Nombre del área" value={areaInput.nombre} onChange={handleAreaChange} className="field-input" />
+          </div>
+  
+          <div className="form-field">
+            <label className="field-label">Valor del área</label>
+            <input type="text" name="valor" placeholder="Valor del área" value={areaInput.valor} onChange={handleAreaChange} className="field-input" />
+          </div>
+  
+          <button type="button" onClick={addArea} className="btn-add-area">Agregar Área</button>
+  
           <ul className="area-list">
             {areas.map((area, index) => (
               <li key={index} className="area-item">{`${area.nombre} - Valor: ${area.valor}`}</li>
             ))}
           </ul>
         </div>
-
-        <div className="form-actions">
+  
+        <div className="form-buttons">
           <button type="button" onClick={handleUpload} className="btn-upload">Subir archivos</button>
           <button type="submit" className="btn-submit">Enviar</button>
         </div>
       </form>
     </div>
   </div>
+  
+
 );
 };
 
