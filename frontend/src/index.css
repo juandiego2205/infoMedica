@@ -8,7 +8,7 @@ html, body {
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   background: linear-gradient(rgba(0, 0, 50, 0.4), rgba(0, 0, 50, 0.4)), 
-  url('../public/Ingreso.jpg') no-repeat center center fixed;
+  url('../public/background2.jpg') no-repeat center center fixed;
   background-size: cover;
   backdrop-filter: blur(2px);
    
@@ -189,9 +189,6 @@ html, body {
 }
 
 /* --- BOTONES DEL FORMULARIO --- */
-
-
-
 .form-button {
   padding: 0.75rem 2rem;
   border-radius: 0.75rem;
@@ -224,19 +221,22 @@ html, body {
 /* --- BUSCADOR DE PACIENTE --- */
 .search-section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  justify-content: center; /* Alinea al centro horizontalmente */
+  align-items: center; /* Alinea al centro verticalmente */
+  gap: 1rem; /* Espacio entre los elementos */
   margin-bottom: 2rem;
+  width: 100%; /* Ocupa el 100% del contenedor padre (el formulario) */
+  max-width: 100%; /* No excede el ancho del formulario */
 }
 
 .search-input {
-  flex-grow: 1;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 1rem; /* Reduce el padding para hacerlo más compacto */
   border: 1px solid #ccc;
-  border-radius: 0.75rem;
-  font-size: 1rem;
+  border-radius: 0.5rem; /* Bordes más sutiles */
+  font-size: 0.95rem; /* Un tamaño de fuente un poco más pequeño */
+  width: 250px; /* Limita el ancho para evitar que se extienda demasiado */
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
 }
 
 .search-input:focus {
@@ -246,18 +246,20 @@ html, body {
 }
 
 .search-button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem; /* Reduce ligeramente el padding */
   background-color: #008B8B;
   color: white;
   font-weight: 600;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem; /* Bordes redondeados más suaves */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Agrega transición de escala */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
 }
 
 .search-button:hover {
   background-color: #006666;
+  transform: scale(1.05); /* Efecto de agrandamiento al hacer hover */
 }
 
 /* --- MENSAJE DE ERROR --- */
