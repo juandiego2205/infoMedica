@@ -8,7 +8,7 @@ html, body {
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   background: linear-gradient(rgba(0, 0, 50, 0.4), rgba(0, 0, 50, 0.4)), 
-  url('../public/background2.jpg') no-repeat center center fixed;
+  url('../public/Ingreso.jpg') no-repeat center center fixed;
   background-size: cover;
   backdrop-filter: blur(2px);
    

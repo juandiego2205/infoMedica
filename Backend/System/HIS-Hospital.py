@@ -1,6 +1,6 @@
 import os
 from flask.cli import load_dotenv
-from functios import leer_archivos_dispositivos
+from functios import leer_archivos_dispositivos, generar_mensaje_hl7
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, request, jsonify
@@ -103,6 +103,7 @@ def actualizar_paciente(id_paciente):
 @app.route('/leer_paciente/<id_paciente>', methods=['GET'])
 def leer_paciente(id_paciente):
     paciente = patients.find_one({"ID": id_paciente}, {"_id": 0})
+    generar_mensaje_hl7(paciente)  # Generar mensaje HL7
     if paciente:
         return jsonify(paciente)
     else:
